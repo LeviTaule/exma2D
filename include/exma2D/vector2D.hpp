@@ -134,16 +134,6 @@ constexpr bool operator==(const T a_vector, const T b_vector);
 template<typename T, typename>
 constexpr bool operator!=(const T a_vector, const T b_vector);
 
-/// @brief Answers if the vectors have the same components
-///
-/// @param a_vector
-/// @param b_vector
-///
-/// @return
-/// A boolean telling us whether the two vectors have the same components
-template<typename T, typename>
-constexpr T operator==(const T a_vector, const T b_vector);
-
 /// @brief Creates a reversed vector
 /// @details
 /// Multiplies both **x** and **y** component of a vector by -1

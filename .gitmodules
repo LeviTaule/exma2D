@@ -1,0 +1,6 @@
+[submodule "include/exma2D/vendor/degrad"]
+	path = include/exma2D/vendor/degrad
+	url = https://github.com/grahamboree/cppDegRad
+[submodule "tests/MosquitoNet"]
+	path = tests/MosquitoNet
+	url = https://github.com/simon-bourne/MosquitoNet

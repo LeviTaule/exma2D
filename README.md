@@ -47,7 +47,7 @@ constexpr VectorF origin{0.f, 0.f};
 constexpr auto crazy = -perpendicule(vec)
 constexpr auto silly = project(crazy, vec) * 3;
 constexpr auto crazy_silly = reflect(crazy, silly);
-constexpr auto go_round = rotate(crazy_silly, origin, 180_deg);
+auto go_round = rotate(crazy_silly, origin, 180_deg);
 
 auto length = len(go_round);
 constexpr auto dot_product = dot(crazy, silly);

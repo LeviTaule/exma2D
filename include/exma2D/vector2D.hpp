@@ -233,7 +233,7 @@ auto distance(const T a_vector, const T b_vector);
 ///
 /// @return
 /// A copy of a **vector** of unit length
-template <typename T, typename, typename, typename, typename>
+template <typename T, typename, typename>
 T normalize(const T vector);
 
 /// @brief Creates a projection of **vector** on **axis**

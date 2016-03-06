@@ -127,9 +127,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
 constexpr bool operator!=(const T a_vector, const T b_vector)
 {
-    return
-        !(exma::utils::compare(a_vector.x, b_vector.x) &&
-        exma::utils::compare(a_vector.y, b_vector.y));
+    return !(a_vector == b_vector);
 }
 
 template <
@@ -219,27 +217,11 @@ template <
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
-    std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
-  typename = std::enable_if<
-    std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
-  typename = std::enable_if<
-    std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
+    std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
 auto normalize(const T vector) ->
 decltype(vector)
 {
-    auto length = len(vector);
-    if(exma::utils::compare(length, 0.f))
-    {
-        return
-        {
-            std::numeric_limits<decltype(std::declval<T>().x)>::quiet_NaN(),
-            std::numeric_limits<decltype(std::declval<T>().y)>::quiet_NaN()
-        };
-    }
-    else
-    {
-        return {vector.x / length, vector.y/length};
-    }
+    return vector/len(vector);
 }
 
 template <

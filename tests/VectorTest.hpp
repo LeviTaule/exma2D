@@ -410,8 +410,8 @@ static Suite s("vectors",
         {
             constexpr VectorF perpendicular = perpendicule(vec);
             check("vector has the value of one of the components negated",
-                VAR(perpendicular.x) == x && VAR(perpendicular.y) == -y ||
-                VAR(perpendicular.x) == -x && VAR(perpendicular.y) == y);
+                VAR(perpendicular.x) == y && VAR(perpendicular.y) == -x ||
+                VAR(perpendicular.x) == -y && VAR(perpendicular.y) == x);
         });
     })
 );

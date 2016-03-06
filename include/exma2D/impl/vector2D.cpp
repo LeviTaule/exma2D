@@ -147,7 +147,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
 constexpr T perpendicule(const T vector)
 {
-    return {-vector.x, vector.y};
+    return {-vector.y, vector.x};
 }
 
 template <

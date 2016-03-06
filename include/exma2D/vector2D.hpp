@@ -105,7 +105,8 @@ constexpr T operator*(const N factor, const T vector);
 /// **vector** passed in. 
 /// @return
 /// A copy of the vector with the altered length
-template <typename T, typename N, typename, typename, typename>
+template <typename T, typename N, typename, typename, typename, typename, 
+            typename>
 constexpr T operator/(const T vector, const N factor);
 
 /// @brief Answers if the vectors have the same components

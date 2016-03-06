@@ -88,7 +88,11 @@ template <
 std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
 std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
-  typename = typename std::enable_if_t<std::is_arithmetic<N>{}>>
+  typename = typename std::enable_if_t<std::is_arithmetic<N>{}>,
+  typename = std::enable_if<
+    std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
+  typename = std::enable_if<
+    std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
 constexpr T operator/(const T vector, const N factor)
 {
     if(exma::utils::compare(factor, static_cast<N>(0)))

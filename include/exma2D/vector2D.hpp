@@ -211,14 +211,16 @@ template <typename T, typename, typename>
 auto len(const T vector);
 
 /// @brief Finds out the distance between the vectors
-///
+/// @details
+/// Note that due to the usage of len() (which calls `std::sqrt()`) this 
+/// function may not be `constexpr`.
 /// @param a_vector
 /// @param b_vector
 ///
 /// @return
 /// The distance between the two vectors
 template <typename T, typename, typename>
-constexpr auto distance(const T a_vector, const T b_vector);
+auto distance(const T a_vector, const T b_vector);
 
 /// @brief Creates a new vector of unit length and the same direction as 
 /// **vector**
@@ -278,7 +280,10 @@ constexpr T reflectN(const T vector, const T axis);
 /// @brief Creates a rotated vector from **vector** around **origin**
 /// @details
 /// The **vector** is rotated about the **origin** by **angle** in clock-wise 
-/// order
+/// order\n
+/// Note that due to the usage of `std::cos()` and `std::sin()` this 
+/// function may not be `constexpr`.
+///
 /// @param vector
 /// @param origin
 /// The point to rotate the vector around
@@ -288,7 +293,7 @@ constexpr T reflectN(const T vector, const T axis);
 /// @return
 /// A copy of rotated **vector**
 template <typename T, typename, typename>
-constexpr T rotate(const T vector, const T origin, Radians angle);
+T rotate(const T vector, const T origin, Radians angle);
 
 }
 }

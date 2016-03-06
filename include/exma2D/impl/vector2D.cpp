@@ -91,7 +91,7 @@ std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
   typename = typename std::enable_if_t<std::is_arithmetic<N>{}>>
 constexpr T operator/(const T vector, const N factor)
 {
-    if(exma::utils::compare(factor, 0))
+    if(exma::utils::compare(factor, static_cast<N>(0)))
     {
         return
         {
@@ -204,7 +204,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto distance(const T a_vector, const T b_vector) ->
+auto distance(const T a_vector, const T b_vector) ->
 decltype(a_vector.x + a_vector.y + b_vector.x + b_vector.y)
 {
     return len(a_vector - b_vector);
@@ -316,7 +316,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto rotate(const T vector, const T origin, Radians angle) ->
+auto rotate(const T vector, const T origin, Radians angle) ->
 decltype(vector)
 {
     const auto cr = cos(angle.getValue());

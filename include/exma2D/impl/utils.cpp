@@ -35,12 +35,24 @@ template <
   typename T,
   typename = 
     std::enable_if_t<std::is_arithmetic<T>::value>>
-bool compare (T a, T b)
+constexpr T abs (T number)
+{
+    if(number < 0)
+        return -number;
+    else
+        return number;
+};
+
+template <
+  typename T,
+  typename = 
+    std::enable_if_t<std::is_arithmetic<T>::value>>
+constexpr bool compare (T a, T b)
 {
     // Due to the usage trigonometric functions, it seems, we must be 10 times 
     // as tolerant as usually.
     // So I decided we will be good people and raised the tolerance 10 times.
-    if(std::abs(a-b) <=  std::numeric_limits<T>::epsilon() * 10)
+    if(abs(a-b) <=  std::numeric_limits<T>::epsilon() * 10)
         return true;
     return false;
 };

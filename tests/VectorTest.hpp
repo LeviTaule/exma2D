@@ -31,6 +31,31 @@ void checkVectorComponents(Check& check, VectorF a, VectorF b) {
 }
 
 static Suite s("vectors",
+    context("constexpr",
+        given("constexpr functions", [](auto & check)
+        {
+            constexpr VectorF vec_a {1, 1};
+            constexpr VectorF vec_b {5, -3};
+            constexpr float scalar_a = .5f;
+
+            constexpr auto additon = vec_a + vec_b;
+            constexpr auto subtraction = vec_a - vec_b;
+            constexpr auto multiplication_vec_scalar = vec_a * scalar_a;
+            constexpr auto multiplication_scalar_vec = scalar_a * vec_a;
+            constexpr auto division = vec_a / scalar_a;
+            constexpr auto equality = vec_a == vec_b;
+            constexpr auto inequality = vec_a != vec_b;
+            constexpr auto reverse = -vec_a;
+            constexpr auto perpendicular = perpendicule(vec_a);
+            constexpr auto dot_product = dot(vec_a, vec_b);
+            constexpr auto cross_product = cross(vec_a, vec_b);
+            constexpr auto len_squared = len2(vec_a);
+            constexpr auto projection = project(vec_b, vec_a);
+            constexpr auto projection_n = projectN(vec_b, vec_a);
+            constexpr auto reflection = reflect(vec_b, vec_a);
+            constexpr auto reflection_n = reflectN(vec_b, vec_a);
+        })
+    ),
     context("addition",
         given("a zero and a 'positive' vector",
             checkVectorComponents,

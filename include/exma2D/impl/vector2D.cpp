@@ -39,7 +39,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr T operator+(const T a_vector, const T b_vector)
+constexpr T operator+(const T & a_vector, const T & b_vector)
 {
     return{a_vector.x + b_vector.x, a_vector.y + b_vector.y};
 }
@@ -50,7 +50,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr T operator-(const T a_vector, const T b_vector)
+constexpr T operator-(const T & a_vector, const T & b_vector)
 {
     return{a_vector.x - b_vector.x, a_vector.y - b_vector.y};
 }
@@ -63,7 +63,7 @@ std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
 std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
   typename = typename std::enable_if_t<std::is_arithmetic<N>{}>>
-constexpr T operator*(const T vector, const N factor)
+constexpr T operator*(const T & vector, const N factor)
 {
     return {vector.x * factor, vector.y * factor};
 }
@@ -76,7 +76,7 @@ template <
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
   typename = typename std::enable_if_t<std::is_arithmetic<N>{}>>
-constexpr T operator*(const N factor, const T vector)
+constexpr T operator*(const N factor, const T & vector)
 {
     return vector * factor;
 }
@@ -93,7 +93,7 @@ std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>,
     std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
   typename = std::enable_if<
     std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
-constexpr T operator/(const T vector, const N factor)
+constexpr T operator/(const T & vector, const N factor)
 {
     if(exma::utils::compare(factor, static_cast<N>(0)))
     {
@@ -112,7 +112,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr bool operator==(const T a_vector, const T b_vector)
+constexpr bool operator==(const T & a_vector, const T & b_vector)
 {
     return
         exma::utils::compare(a_vector.x, b_vector.x) &&
@@ -125,7 +125,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr bool operator!=(const T a_vector, const T b_vector)
+constexpr bool operator!=(const T & a_vector, const T & b_vector)
 {
     return !(a_vector == b_vector);
 }
@@ -136,7 +136,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr T operator-(const T vector)
+constexpr T operator-(const T & vector)
 {
     return {-vector.x, -vector.y};
 }
@@ -147,7 +147,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr T perpendicule(const T vector)
+constexpr T perpendicule(const T & vector)
 {
     return {-vector.y, vector.x};
 }
@@ -158,7 +158,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto dot(const T a_vector, const T b_vector) ->
+constexpr auto dot(const T & a_vector, const T & b_vector) ->
 decltype(a_vector.x + b_vector.x)
 {
     return (a_vector.x * b_vector.x) + (a_vector.y * b_vector.y);
@@ -170,7 +170,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto cross(const T a_vector, const T b_vector) ->
+constexpr auto cross(const T & a_vector, const T & b_vector) ->
 decltype(a_vector.x + b_vector.x)
 {
     return (a_vector.x * b_vector.y) - (a_vector.y * b_vector.x);
@@ -182,7 +182,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto len2(const T vector) ->
+constexpr auto len2(const T & vector) ->
 decltype(vector.x + vector.y)
 {
     return dot(vector, vector);
@@ -194,7 +194,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto len(const T vector) ->
+auto len(const T & vector) ->
 decltype(vector.x + vector.y)
 {
     return sqrt(len2(vector));
@@ -206,7 +206,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto distance(const T a_vector, const T b_vector) ->
+auto distance(const T & a_vector, const T & b_vector) ->
 decltype(a_vector.x + a_vector.y + b_vector.x + b_vector.y)
 {
     return len(a_vector - b_vector);
@@ -218,7 +218,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto normalize(const T vector) ->
+auto normalize(const T & vector) ->
 decltype(vector)
 {
     return vector/len(vector);
@@ -234,7 +234,7 @@ template <
     std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
   typename = std::enable_if<
     std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
-constexpr auto project(const T vector, const T axis) ->
+constexpr auto project(const T & vector, const T & axis) ->
 decltype(vector)
 {
     if(exma::utils::compare(axis.x, 0.f) && exma::utils::compare(axis.y, 0.f))
@@ -253,7 +253,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto projectN(const T vector, const T axis) ->
+constexpr auto projectN(const T & vector, const T & axis) ->
 decltype(vector)
 {
     auto quantifier = dot(vector, axis);
@@ -270,7 +270,7 @@ template <
     std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
   typename = std::enable_if<
     std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
-constexpr auto reflect(const T vector, const T axis) ->
+constexpr auto reflect(const T & vector, const T & axis) ->
 decltype(vector)
 {
     if(exma::utils::compare(axis.x, 0.f) && exma::utils::compare(axis.y, 0.f))
@@ -289,7 +289,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto reflectN(const T vector, const T axis) ->
+constexpr auto reflectN(const T & vector, const T & axis) ->
 decltype(vector)
 {
     auto result = projectN(vector, axis) * 2;
@@ -302,7 +302,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto rotate(const T vector, const T origin, Radians angle) ->
+auto rotate(const T & vector, const T & origin, Radians & angle) ->
 decltype(vector)
 {
     const auto cr = cos(angle.getValue());

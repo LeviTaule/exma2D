@@ -54,7 +54,7 @@ namespace vector {
 /// @return
 /// A copy of the two vectors added
 template<typename T, typename>
-constexpr T operator+(const T a_vector, const T b_vector);
+constexpr T operator+(const T & a_vector, const T & b_vector);
 
 /// @brief Creates a vector from subtraction of two vectors
 ///
@@ -64,7 +64,7 @@ constexpr T operator+(const T a_vector, const T b_vector);
 /// @return
 /// A copy of the two vectors subtracted
 template<typename T, typename>
-constexpr T operator-(const T a_vector, const T b_vector);
+constexpr T operator-(const T & a_vector, const T & b_vector);
 
 /// @brief Creates a vector of the same direction as **vector**, but 
 /// **factor** times longer.
@@ -78,7 +78,7 @@ constexpr T operator-(const T a_vector, const T b_vector);
 /// @return
 /// A copy of the vector with the altered length
 template <typename T, typename N, typename, typename, typename>
-constexpr T operator*(const T vector, const N factor);
+constexpr T operator*(const T & vector, const N factor);
 
 /// @brief Creates a vector of the same direction as **vector**, but 
 /// **factor** times longer.
@@ -92,7 +92,7 @@ constexpr T operator*(const T vector, const N factor);
 /// @return
 /// A copy of the vector with the altered length
 template <typename N, typename T, typename, typename, typename>
-constexpr T operator*(const N factor, const T vector);
+constexpr T operator*(const N factor, const T & vector);
 
 /// @brief Creates a vector of the same direction as **vector**, but 
 /// **factor** times shorter.
@@ -107,7 +107,7 @@ constexpr T operator*(const N factor, const T vector);
 /// A copy of the vector with the altered length
 template <typename T, typename N, typename, typename, typename, typename, 
             typename>
-constexpr T operator/(const T vector, const N factor);
+constexpr T operator/(const T & vector, const N factor);
 
 /// @brief Answers if the vectors have the same components
 /// @details
@@ -120,7 +120,7 @@ constexpr T operator/(const T vector, const N factor);
 /// `true` if the vectors have the same values (with some tolerance),
 /// `false` otherwise
 template<typename T, typename>
-constexpr bool operator==(const T a_vector, const T b_vector);
+constexpr bool operator==(const T & a_vector, const T & b_vector);
 
 /// @brief Answers if the vectors have the same components
 /// @details
@@ -133,7 +133,7 @@ constexpr bool operator==(const T a_vector, const T b_vector);
 /// `true` if the vectors have the same values (with some tolerance),
 /// `false` otherwise
 template<typename T, typename>
-constexpr bool operator!=(const T a_vector, const T b_vector);
+constexpr bool operator!=(const T & a_vector, const T & b_vector);
 
 /// @brief Creates a reversed vector
 /// @details
@@ -145,7 +145,7 @@ constexpr bool operator!=(const T a_vector, const T b_vector);
 /// @return
 /// A copy of the reversed vector
 template<typename T, typename>
-constexpr T operator-(const T vector);
+constexpr T operator-(const T & vector);
 
 /// @brief Creates a perpendicular vector
 /// @details
@@ -160,7 +160,7 @@ constexpr T operator-(const T vector);
 /// @return
 /// A copy of the reversed vector
 template<typename T, typename>
-constexpr T perpendicule(const T vector);
+constexpr T perpendicule(const T & vector);
 
 /// @brief Finds out the **dot**(**scalar**) product
 ///
@@ -170,7 +170,7 @@ constexpr T perpendicule(const T vector);
 /// @return
 /// The dot product of **a_vector** and **b_vector**
 template <typename T, typename, typename>
-constexpr auto dot(const T a_vector, const T b_vector);
+constexpr auto dot(const T & a_vector, const T & b_vector);
 
 /// @brief Finds out the **cross**(**exterior**) product
 ///
@@ -180,7 +180,7 @@ constexpr auto dot(const T a_vector, const T b_vector);
 /// @return
 /// The cross product of **a_vector** and **b_vector**
 template <typename T, typename, typename>
-constexpr auto cross(const T a_vector, const T b_vector);
+constexpr auto cross(const T & a_vector, const T & b_vector);
 
 /// @brief Finds out the squared length of the vector
 /// @details
@@ -194,7 +194,7 @@ constexpr auto cross(const T a_vector, const T b_vector);
 /// @return
 /// The length of the vector to the power of 2
 template <typename T, typename, typename>
-constexpr auto len2(const T vector);
+constexpr auto len2(const T & vector);
 
 /// @brief Finds out the length of the vector
 /// @details
@@ -209,7 +209,7 @@ constexpr auto len2(const T vector);
 /// @return
 /// The length of the vector
 template <typename T, typename, typename>
-auto len(const T vector);
+auto len(const T & vector);
 
 /// @brief Finds out the distance between the vectors
 /// @details
@@ -221,7 +221,7 @@ auto len(const T vector);
 /// @return
 /// The distance between the two vectors
 template <typename T, typename, typename>
-auto distance(const T a_vector, const T b_vector);
+auto distance(const T & a_vector, const T & b_vector);
 
 /// @brief Creates a new vector of unit length and the same direction as 
 /// **vector**
@@ -234,7 +234,7 @@ auto distance(const T a_vector, const T b_vector);
 /// @return
 /// A copy of a **vector** of unit length
 template <typename T, typename, typename>
-T normalize(const T vector);
+auto normalize(const T & vector);
 
 /// @brief Creates a projection of **vector** on **axis**
 ///
@@ -244,7 +244,7 @@ T normalize(const T vector);
 /// @return
 /// A copy of **vector** projection
 template <typename T, typename, typename, typename, typename>
-constexpr T project(const T vector, const T axis);
+constexpr auto project(const T & vector, const T & axis);
 
 /// @brief Creates a projection of **vector** on *unit **axis** vector*
 ///
@@ -254,7 +254,7 @@ constexpr T project(const T vector, const T axis);
 /// @return
 /// A copy of **vector** projection
 template <typename T, typename, typename>
-constexpr T projectN(const T vector, const T axis);
+constexpr auto projectN(const T & vector, const T & axis);
 
 /// @brief Creates a reflection of **vector** on **axis** vector
 ///
@@ -265,7 +265,7 @@ constexpr T projectN(const T vector, const T axis);
 /// @return
 /// A copy of **vector** reflection
 template <typename T, typename, typename>
-constexpr T reflect(const T vector, const T axis);
+constexpr T reflect(const T & vector, const T & axis);
 
 /// @brief Creates a reflection of **vector** on *unit **axis** vector*
 ///
@@ -276,7 +276,7 @@ constexpr T reflect(const T vector, const T axis);
 /// @return
 /// A copy of **vector** reflection
 template <typename T, typename, typename>
-constexpr T reflectN(const T vector, const T axis);
+constexpr T reflectN(const T & vector, const T & axis);
 
 /// @brief Creates a rotated vector from **vector** around **origin**
 /// @details
@@ -294,7 +294,7 @@ constexpr T reflectN(const T vector, const T axis);
 /// @return
 /// A copy of rotated **vector**
 template <typename T, typename, typename>
-T rotate(const T vector, const T origin, Radians angle);
+auto rotate(const T & vector, const T & origin, Radians & angle);
 
 }
 }

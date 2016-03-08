@@ -29,7 +29,7 @@
 #include <limits>
 #include <type_traits>
 #include "../vector2D.hpp"
-#include "../impl/utils.cpp"
+#include "../impl/utils.tpp"
 
 namespace exma { namespace vector {
 
@@ -218,8 +218,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto normalize(const T & vector) ->
-decltype(vector)
+T normalize(const T & vector)
 {
     return vector/len(vector);
 }
@@ -234,8 +233,7 @@ template <
     std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
   typename = std::enable_if<
     std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
-constexpr auto project(const T & vector, const T & axis) ->
-decltype(vector)
+constexpr T project(const T & vector, const T & axis)
 {
     if(exma::utils::compare(axis.x, 0.f) && exma::utils::compare(axis.y, 0.f))
         return
@@ -253,8 +251,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto projectN(const T & vector, const T & axis) ->
-decltype(vector)
+constexpr T projectN(const T vector, const T axis)
 {
     auto quantifier = dot(vector, axis);
     return {axis.x * quantifier, axis.y * quantifier};
@@ -270,8 +267,7 @@ template <
     std::numeric_limits<decltype(std::declval<T>().x)>::has_quiet_NaN>,
   typename = std::enable_if<
     std::numeric_limits<decltype(std::declval<T>().y)>::has_quiet_NaN>>
-constexpr auto reflect(const T & vector, const T & axis) ->
-decltype(vector)
+constexpr T reflect(const T & vector, const T & axis)
 {
     if(exma::utils::compare(axis.x, 0.f) && exma::utils::compare(axis.y, 0.f))
         return
@@ -289,8 +285,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-constexpr auto reflectN(const T & vector, const T & axis) ->
-decltype(vector)
+constexpr T reflectN(const T & vector, const T & axis)
 {
     auto result = projectN(vector, axis) * 2;
     return {vector.x - result.x, vector.y - result.y};
@@ -302,8 +297,7 @@ template <
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().x)>{}>,
   typename = 
     std::enable_if_t<std::is_arithmetic<decltype(std::declval<T>().y)>{}>>
-auto rotate(const T & vector, const T & origin, Radians & angle) ->
-decltype(vector)
+T rotate(const T & vector, const T & origin, Radians angle)
 {
     const auto cr = cos(angle.getValue());
     const auto sr = sin(angle.getValue());

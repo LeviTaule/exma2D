@@ -1,6 +1,6 @@
 #include "MosquitoNet.h"
 #include "exma2D/vector2D.hpp"
-#include "exma2D/impl/utils.cpp"
+#include "exma2D/impl/utils.tpp"
 
 #include "exma2D/vendor/degrad/degrad.h"
 

@@ -233,8 +233,8 @@ auto distance(const T & a_vector, const T & b_vector);
 ///
 /// @return
 /// A copy of a **vector** of unit length
-template <typename T, typename, typename>
-auto normalize(const T & vector);
+template <typename T, typename>
+T normalize(const T & vector);
 
 /// @brief Creates a projection of **vector** on **axis**
 ///
@@ -243,8 +243,8 @@ auto normalize(const T & vector);
 ///
 /// @return
 /// A copy of **vector** projection
-template <typename T, typename, typename, typename, typename>
-constexpr auto project(const T & vector, const T & axis);
+template <typename T, typename>
+constexpr T project(const T & vector, const T & axis);
 
 /// @brief Creates a projection of **vector** on *unit **axis** vector*
 ///
@@ -253,8 +253,8 @@ constexpr auto project(const T & vector, const T & axis);
 ///
 /// @return
 /// A copy of **vector** projection
-template <typename T, typename, typename>
-constexpr auto projectN(const T & vector, const T & axis);
+template <typename T, typename>
+constexpr T projectN(const T vector, const T axis);
 
 /// @brief Creates a reflection of **vector** on **axis** vector
 ///
@@ -264,7 +264,7 @@ constexpr auto projectN(const T & vector, const T & axis);
 ///
 /// @return
 /// A copy of **vector** reflection
-template <typename T, typename, typename>
+template <typename T, typename>
 constexpr T reflect(const T & vector, const T & axis);
 
 /// @brief Creates a reflection of **vector** on *unit **axis** vector*
@@ -274,8 +274,8 @@ constexpr T reflect(const T & vector, const T & axis);
 /// Must be a unit vector
 ///
 /// @return
-/// A copy of **vector** reflection
-template <typename T, typename, typename>
+/// A copy of **vector** reflectionc
+template <typename T, typename>
 constexpr T reflectN(const T & vector, const T & axis);
 
 /// @brief Creates a rotated vector from **vector** around **origin**
@@ -293,12 +293,12 @@ constexpr T reflectN(const T & vector, const T & axis);
 ///
 /// @return
 /// A copy of rotated **vector**
-template <typename T, typename, typename>
-auto rotate(const T & vector, const T & origin, Radians & angle);
+template <typename T, typename>
+T rotate(const T & vector, const T & origin, Radians angle);
 
 }
 }
 
-#include "impl/vector2D.cpp"
+#include "impl/vector2D.tpp"
 
 #endif

@@ -28,7 +28,7 @@
 
 #define EXMA_MAJOR 0
 #define EXMA_MINOR 2
-#define EXMA_PATCH 0
+#define EXMA_PATCH 1
 
 namespace exma { namespace version {
 constexpr unsigned int major = EXMA_MAJOR;

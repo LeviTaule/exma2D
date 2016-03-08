@@ -1,6 +1,9 @@
 enable_testing()
 
-include_directories("${PROJECT_SOURCE_DIR}/tests/MosquitoNet/cpp/single-include")
+include_directories(
+    "${PROJECT_SOURCE_DIR}/tests/MosquitoNet/cpp/single-include"
+    )
+
 add_executable(${MAIN_EXECUTABLE} tests.cpp)
 
 # Turn on C++14 support
